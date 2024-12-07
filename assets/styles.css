@@ -1,0 +1,203 @@
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb; /* Tailwind bg-gray-50 */
+  }
+  
+  /* Wrapper dan Layout */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Bagian Header (Sistem Manajemen Toko) */
+  .header {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: #f3f4f6; /* Tailwind bg-gray-100 */
+    padding-top: 3rem;
+    padding-left: 1rem;
+  }
+  
+  .menu li {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  .menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #4b5563; /* Tailwind text-gray-700 */
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .menu a:hover {
+    background-color: #cbd5e1; /* Tailwind hover:bg-blue-200 */
+  }
+  
+  .menu a.active {
+    background-color: #dbeafe; /* Tailwind bg-blue-100 */
+    color: #1d4ed8; /* Tailwind text-blue-800 */
+  }
+  
+  /* Bagian Main Content */
+  .content {
+    margin-left: 20%;
+    padding: 1.5rem;
+    flex: 1;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Bagian Cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card {
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Bagian Data Grid */
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .data-box {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .data-box h3 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Placeholder untuk elemen yang belum ada */
+  .placeholder {
+    height: 10rem;
+    background-color: #e5e7eb; /* Tailwind bg-gray-200 */
+    border-radius: 0.5rem;
+  }
+  
+  /* Khusus transaksi yang mencakup semua kolom */
+  .transactions .data-box {
+    grid-column: span 2;
+  }
+  
+  /* Bagian Tabel */
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb; /* Tailwind border-gray-300 */
+  }
+  
+  table th {
+    background-color: #f3f4f6; /* Tailwind bg-gray-100 */
+    font-weight: bold;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9fafb; /* Tailwind bg-gray-50 */
+  }
+  
+  table tr:hover {
+    background-color: #e5e7eb; /* Tailwind bg-gray-200 */
+  }
+  
+  /* Bagian Form (Input & Fokus) */
+  .form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db; /* Tailwind border-gray-300 */
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    color: #374151; /* Tailwind text-gray-800 */
+    background-color: #fff;
+  }
+  
+  .form-input:focus {
+    border-color: #2563eb; /* Tailwind border-blue-600 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Tailwind ring-blue-500 */
+    outline: none;
+  }
+  
+  /* Bagian Primary Button */
+  .btn-primary {
+    background-color: #2563eb; /* Tailwind bg-blue-600 */
+    color: white;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1d4ed8; /* Tailwind bg-blue-700 */
+  }
+  
+  /* Button hover & active */
+  button:hover {
+    background-color: #2563eb; /* Tailwind hover:bg-blue-600 */
+  }
+  
+  button:active {
+    background-color: #1e40af; /* Tailwind bg-blue-800 */
+  }
+  
+  /* Bagian Input Umum */
+  input {
+    border: 1px solid #e5e7eb; /* Tailwind border-gray-300 */
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  button {
+    background-color: #3b82f6; /* Tailwind bg-blue-500 */
+    color: white;
+  }
+  
+  button:hover {
+    background-color: #2563eb; /* Tailwind hover:bg-blue-600 */
+  }
+  
