@@ -31,6 +31,7 @@
             <li><a href="/produk" class="<?php echo $active == 'produk' ? 'active' : ''; ?>">Produk</a></li>
             <li><a href="/kategori" class="<?php echo ($active == 'kategori') ? 'active' : '' ; ?>">Kategori</a></li>
             <li><a href="/penjualan" class="<?php echo $active == 'penjualan' ? 'active' : ''; ?>">Penjualan</a></li>
+            <li><a href="/diskon" class="<?php echo $active == 'diskon' ? 'active' : ''; ?>">Diskon</a></li>
             <li><a href="/pembelian" class="<?php echo $active == 'pembelian' ? 'active' : ''; ?>">Pembelian</a></li>
             <li><a href="/biaya-operasional" class="<?php echo $active == 'operasional' ? 'active' : '' ?>" >Biaya Operasional</a></li>
             <li><a href="/laporan-keuangan" class="<?php echo $active == 'keuangan' ? 'active' : '' ?>">Laporan Keuangan</a></li>
