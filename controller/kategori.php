@@ -23,7 +23,7 @@ function tambahKategori($data)
 function getKategori()
 {
   global $conn;
-  $query = "SELECT * FROM kategori_produk";
+  $query = "SELECT * FROM kategori_produk ORDER BY id_kategori_produk DESC";
   $result = mysqli_query($conn, $query);
   $data = [];
   while ($row = mysqli_fetch_assoc($result)) {
@@ -69,7 +69,7 @@ function deleteKategori($id)
 function searchKategori($keyword)
 {
   global $conn;
-  $query = "SELECT * FROM kategori_produk WHERE nama_kategori LIKE '%$keyword%' OR deskripsi_produk LIKE '%$keyword%'";
+  $query = "SELECT * FROM kategori_produk WHERE nama_kategori LIKE '%$keyword%' OR deskripsi_produk LIKE '%$keyword%' ORDER BY id_kategori_produk DESC";
   $result = mysqli_query($conn, $query);
   $data = [];
   while ($row = mysqli_fetch_assoc($result)) {
