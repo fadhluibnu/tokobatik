@@ -32,7 +32,7 @@ function getPembelian()
     $query = "SELECT pembelian.*, laporan_keuangan.periode_mulai, laporan_keuangan.periode_selesai 
               FROM pembelian 
               LEFT JOIN laporan_keuangan 
-              ON pembelian.id_laporan_keuangan = laporan_keuangan.id_laporan";
+              ON pembelian.id_laporan_keuangan = laporan_keuangan.id_laporan ORDER BY id_pembelian DESC";
     $result = mysqli_query($conn, $query);
 
     $data = [];
@@ -92,7 +92,7 @@ function searchPembelian($keyword)
 {
     global $conn;
 
-    $query = "SELECT * FROM pembelian WHERE nama_barang LIKE '%$keyword%' OR harga_perbarang LIKE '%$keyword%' OR jumlah_barang LIKE '%$keyword%' OR total_pembelian LIKE '%$keyword%' OR status_pembelian LIKE '%$keyword%' OR status_pembayaran LIKE '%$keyword%' OR metode_pembayaran LIKE '%$keyword%' OR catatan_pembelian LIKE '%$keyword%' OR tanggal_beli LIKE '%$keyword%'";
+    $query = "SELECT * FROM pembelian WHERE nama_barang LIKE '%$keyword%' OR harga_perbarang LIKE '%$keyword%' OR jumlah_barang LIKE '%$keyword%' OR total_pembelian LIKE '%$keyword%' OR status_pembelian LIKE '%$keyword%' OR status_pembayaran LIKE '%$keyword%' OR metode_pembayaran LIKE '%$keyword%' OR catatan_pembelian LIKE '%$keyword%' OR tanggal_beli LIKE '%$keyword%' ORDER BY id_pembelian DESC";
 
     $result = mysqli_query($conn, $query);
 
