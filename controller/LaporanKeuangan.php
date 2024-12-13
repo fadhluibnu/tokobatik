@@ -110,6 +110,10 @@ function getDetailLaporanKeuangan($id)
     $resultLaporan = mysqli_query($conn, $queryLaporan);
     $laporan_keuangan = mysqli_fetch_assoc($resultLaporan);
 
+    // update total_pendapatan, total_pengeluaran, laba_bersih
+    $queryUpdate = "UPDATE laporan_keuangan SET total_pendapatan = $totalPendapatan, total_pengeluaran = $totalPengeluaran, laba_bersih = $total_laba_bersih WHERE id_laporan = $id";
+    mysqli_query($conn, $queryUpdate);
+
     $result = [
         'total_pendapatan' => $totalPendapatan,
         'total_pengeluaran' => $totalPengeluaran,
