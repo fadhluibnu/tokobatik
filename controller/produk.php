@@ -26,7 +26,7 @@ function tambahProduk($data)
 function getProduk()
 {
     global $conn;
-    $query = "SELECT produk.*, kategori_produk.nama_kategori FROM produk JOIN kategori_produk ON produk.id_kategori_produk = kategori_produk.id_kategori_produk";
+    $query = "SELECT produk.*, kategori_produk.nama_kategori FROM produk JOIN kategori_produk ON produk.id_kategori_produk = kategori_produk.id_kategori_produk ORDER BY id_produk DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -75,7 +75,7 @@ function deleteProduk($id)
 function searchProduk($keyword)
 {
     global $conn;
-    $query = "SELECT produk.*, kategori_produk.nama_kategori FROM produk JOIN kategori_produk ON produk.id_kategori_produk = kategori_produk.id_kategori_produk WHERE nama_produk LIKE '%$keyword%' OR kode_produk LIKE '%$keyword%' OR deskripsi_produk LIKE '%$keyword%'";
+    $query = "SELECT produk.*, kategori_produk.nama_kategori FROM produk JOIN kategori_produk ON produk.id_kategori_produk = kategori_produk.id_kategori_produk WHERE nama_produk LIKE '%$keyword%' OR kode_produk LIKE '%$keyword%' OR deskripsi_produk LIKE '%$keyword%' ORDER BY id_produk DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
