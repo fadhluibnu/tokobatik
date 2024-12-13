@@ -25,7 +25,7 @@ function tambahDiskon($data)
 function getDiskon()
 {
     global $conn;
-    $query = "SELECT * FROM diskon";
+    $query = "SELECT * FROM diskon ORDER BY id_diskon DESC";
     $result = mysqli_query($conn, $query);
     $dataDiskon = [];
     while ($diskon = mysqli_fetch_assoc($result)) {
@@ -77,7 +77,7 @@ function deleteDiskon($id)
 function searchDiskon($keyword)
 {
     global $conn;
-    $query = "SELECT * FROM diskon WHERE nama_diskon LIKE '%$keyword%' OR periode_mulai LIKE '%$keyword%' OR periode_selesai LIKE '%$keyword%' OR persentase LIKE '%$keyword%' OR batasan_harga LIKE '%$keyword%' OR minimal_pembelian LIKE '%$keyword%'";
+    $query = "SELECT * FROM diskon WHERE nama_diskon LIKE '%$keyword%' OR periode_mulai LIKE '%$keyword%' OR periode_selesai LIKE '%$keyword%' OR persentase LIKE '%$keyword%' OR batasan_harga LIKE '%$keyword%' OR minimal_pembelian LIKE '%$keyword%' ORDER BY id_diskon DESC";
     $result = mysqli_query($conn, $query);
     $dataDiskon = [];
     while ($diskon = mysqli_fetch_assoc($result)) {
