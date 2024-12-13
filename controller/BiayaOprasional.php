@@ -21,7 +21,7 @@ function getBiayaOperasional()
     global $conn;
     $query = "SELECT b.*, l.periode_mulai, l.periode_selesai 
               FROM biaya_operasional b 
-              JOIN laporan_keuangan l ON b.id_laporan = l.id_laporan";
+              JOIN laporan_keuangan l ON b.id_laporan = l.id_laporan ORDER BY id_biaya_opersional DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -66,7 +66,7 @@ function searchBiayaOperasional($keyword)
     $query = "SELECT b.*, l.periode_mulai, l.periode_selesai 
               FROM biaya_operasional b 
               JOIN laporan_keuangan l ON b.id_laporan = l.id_laporan
-              WHERE b.jenis_biaya LIKE '%$keyword%' OR b.total_biaya LIKE '%$keyword%' OR b.deskripsi LIKE '%$keyword%' OR b.tanggal LIKE '%$keyword%'";
+              WHERE b.jenis_biaya LIKE '%$keyword%' OR b.total_biaya LIKE '%$keyword%' OR b.deskripsi LIKE '%$keyword%' OR b.tanggal LIKE '%$keyword%' ORDER BY id_biaya_opersional DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
