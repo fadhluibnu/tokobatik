@@ -58,7 +58,7 @@ function getPenjualanById($id)
 function getPenjualan()
 {
     global $conn;
-    $query = "SELECT penjualan.*, produk.nama_produk, produk.image, diskon.nama_diskon, diskon.persentase, diskon.batasan_harga, laporan_keuangan.id_laporan, laporan_keuangan.periode_mulai, laporan_keuangan.periode_selesai FROM penjualan LEFT JOIN produk ON penjualan.id_produk = produk.id_produk LEFT JOIN diskon ON penjualan.id_diskon = diskon.id_diskon LEFT JOIN laporan_keuangan ON penjualan.id_laporan_keuangan = laporan_keuangan.id_laporan";
+    $query = "SELECT penjualan.*, produk.nama_produk, produk.image, diskon.nama_diskon, diskon.persentase, diskon.batasan_harga, laporan_keuangan.id_laporan, laporan_keuangan.periode_mulai, laporan_keuangan.periode_selesai FROM penjualan LEFT JOIN produk ON penjualan.id_produk = produk.id_produk LEFT JOIN diskon ON penjualan.id_diskon = diskon.id_diskon LEFT JOIN laporan_keuangan ON penjualan.id_laporan_keuangan = laporan_keuangan.id_laporan ORDER BY penjualan.id_penjualan DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -80,7 +80,7 @@ function deletePenjualan($id)
 function searchPenjualan($keyword)
 {
     global $conn;
-    $query = "SELECT penjualan.*, produk.nama_produk, produk.image, diskon.nama_diskon, diskon.persentase, diskon.batasan_harga, laporan_keuangan.id_laporan, laporan_keuangan.periode_mulai, laporan_keuangan.periode_selesai FROM penjualan LEFT JOIN produk ON penjualan.id_produk = produk.id_produk LEFT JOIN diskon ON penjualan.id_diskon = diskon.id_diskon LEFT JOIN laporan_keuangan ON penjualan.id_laporan_keuangan = laporan_keuangan.id_laporan WHERE produk.nama_produk LIKE '%$keyword%' OR penjualan.metode_pembayaran LIKE '%$keyword%' OR penjualan.tanggal_jual LIKE '%$keyword%' OR penjualan.catatan_penjualan LIKE '%$keyword%'";
+    $query = "SELECT penjualan.*, produk.nama_produk, produk.image, diskon.nama_diskon, diskon.persentase, diskon.batasan_harga, laporan_keuangan.id_laporan, laporan_keuangan.periode_mulai, laporan_keuangan.periode_selesai FROM penjualan LEFT JOIN produk ON penjualan.id_produk = produk.id_produk LEFT JOIN diskon ON penjualan.id_diskon = diskon.id_diskon LEFT JOIN laporan_keuangan ON penjualan.id_laporan_keuangan = laporan_keuangan.id_laporan WHERE produk.nama_produk LIKE '%$keyword%' OR penjualan.metode_pembayaran LIKE '%$keyword%' OR penjualan.tanggal_jual LIKE '%$keyword%' OR penjualan.catatan_penjualan LIKE '%$keyword%' ORDER BY penjualan.id_penjualan DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
