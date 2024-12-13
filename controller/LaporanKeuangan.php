@@ -80,3 +80,43 @@ function searchLaporanKeuangan($keyword)
     }
     return $data;
 }
+
+// detail laporan keuangan
+function getDetailLaporanKeuangan($id)
+{
+    global $conn;
+
+    // total pendapatan
+    $queryPendapatan = "SELECT SUM(total_bayar) as total_pendapatan FROM penjualan WHERE id_laporan_keuangan = $id";
+    $resultPendapatan = mysqli_query($conn, $queryPendapatan);
+    $totalPendapatan = mysqli_fetch_assoc($resultPendapatan)['total_pendapatan'];
+
+    // total pengeluaran
+    $queryPengeluaran = "SELECT SUM(total_pembelian) as total_pengeluaran FROM pembelian WHERE id_laporan_keuangan = $id";
+    $resultPengeluaran = mysqli_query($conn, $queryPengeluaran);
+    $totalPengeluaran = mysqli_fetch_assoc($resultPengeluaran)['total_pengeluaran'];
+
+    // total biaya operasional
+    $queryBiayaOperasional = "SELECT SUM(total_biaya) as biaya_operasional FROM biaya_operasional WHERE id_laporan = $id";
+    $resultBiayaOperasional = mysqli_query($conn, $queryBiayaOperasional);
+    $BiayaOperasional = mysqli_fetch_assoc($resultBiayaOperasional)['biaya_operasional'];
+
+    // total laba bersih
+    $total_laba_bersih = $totalPendapatan - ($totalPengeluaran + $BiayaOperasional);
+
+    // get laporan keuangan by id
+    $queryLaporan = "SELECT * FROM laporan_keuangan WHERE id_laporan = $id";
+    $resultLaporan = mysqli_query($conn, $queryLaporan);
+    $laporan_keuangan = mysqli_fetch_assoc($resultLaporan);
+
+    $result = [
+        'total_pendapatan' => $totalPendapatan,
+        'total_pengeluaran' => $totalPengeluaran,
+        'biaya_operasional' => $BiayaOperasional,
+        'total_laba_bersih' => $total_laba_bersih,
+        'laporan_keuangan' => $laporan_keuangan
+    ];
+
+    return $result;
+}
+?>

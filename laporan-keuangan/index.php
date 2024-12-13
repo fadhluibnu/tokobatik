@@ -80,18 +80,30 @@ if (isset($_POST['deleteLaporanKeuangan'])) {
                         <td class="p-3"><?php echo date('j F Y', strtotime($laporanKeuangan['periode_selesai'])); ?></td>
                         <td class="p-3">
                             <div class="flex gap-2">
+                                <a href="/laporan-keuangan/detail.php?id=<?= $laporanKeuangan['id_laporan'] ?>" class="bg-green-100 text-green-500 px-3 py-2 rounded-lg hover:bg-green-200"><i class="fas fa-info-circle"></i></a>
                                 <a href="/laporan-keuangan/edit.php?id=<?php echo $laporanKeuangan['id_laporan']; ?>" class="bg-blue-100 text-blue-500 px-3 py-2 rounded-lg hover:bg-blue-200 shadow-md" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="/laporan-keuangan" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus laporan keuangan ini?');">
-                                    <input type="hidden" name="id" value="<?php echo $laporanKeuangan['id_laporan']; ?>">
-                                    <button class="delete-button bg-red-100 text-red-500 px-3 py-2 rounded-lg hover:bg-red-200 shadow-md" type="submit" name="deleteLaporanKeuangan">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
+                                <button class="bg-red-100 text-red-500 px-3 py-2 rounded-lg hover:bg-red-200" onclick="openDeleteModal('<?= $laporanKeuangan['id_laporan'] ?>')"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </td>
                     </tr>
+
+                    <!-- Pop-up Modal for Delete -->
+                    <div id="delete-modal<?= $laporanKeuangan['id_laporan']; ?>" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                        <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+                            <h3 class="text-lg font-semibold mb-4">Apakah Anda yakin ingin menghapus laporan keuangan ini?</h3>
+                            <div class="flex justify-end gap-4">
+                                <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400" onclick="closeModal('delete-modal<?= $laporanKeuangan['id_laporan'] ?>')">Batal</button>
+                                <form action="/laporan-keuangan/" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $laporanKeuangan['id_laporan']; ?>">
+                                    <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" type="submit" name="deleteLaporanKeuangan">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -100,3 +112,16 @@ if (isset($_POST['deleteLaporanKeuangan'])) {
     </div>
 
 </div>
+
+<script>
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add("hidden");
+    }
+
+    function openDeleteModal(id) {
+        document.getElementById(`delete-modal${id}`).classList.remove("hidden");
+    }
+</script>
+<?php
+include '../components/footer.php';
+?>
