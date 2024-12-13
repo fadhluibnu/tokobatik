@@ -17,7 +17,7 @@ function tambahLaporanKeuangan($data)
 function getLaporanKeuangan()
 {
     global $conn;
-    $query = "SELECT * FROM laporan_keuangan";
+    $query = "SELECT * FROM laporan_keuangan ORDER BY id_laporan DESC";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -69,7 +69,8 @@ function searchLaporanKeuangan($keyword)
               OR YEAR(periode_mulai) = '$safeKeyword' 
               OR YEAR(periode_selesai) = '$safeKeyword' 
               OR DATE(periode_mulai) = '$safeKeyword' 
-              OR DATE(periode_selesai) = '$safeKeyword'";
+              OR DATE(periode_selesai) = '$safeKeyword'
+              ORDER BY id_laporan DESC";
 
     $result = mysqli_query($conn, $query);
 
